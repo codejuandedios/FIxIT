@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_registrarse">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:isScrollContainer="false"
+        android:id="@+id/scroll_view">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/txt_carne"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_round"
+        android:hint="Carné" />
+
+    <EditText
+        android:id="@+id/txt_nombre"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_round"
+        android:hint="Nombre" />
+
+    <EditText
+        android:id="@+id/txt_apellido"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_round"
+        android:hint="Apellido" />
+
+        <EditText
+            android:id="@+id/txtCorreo"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/edit_round"
+            android:hint="Correo Electronico" />
+
+    <RadioButton
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_round"
+        android:text="Alumno"/>
+
+        <RadioButton
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/edit_round"
+            android:text="Maestro" />
+
+
+    <EditText
+        android:id="@+id/txt_password"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/txt_email"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_round"
+        android:hint="Contraseña" />
+
+    <EditText
+        android:id="@+id/txt_repPassword"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/txt_email"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/edit_round"
+        android:hint="Repetir Contraseña" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="38dp"
+        android:layout_below="@+id/txt_password"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Registrarse"
+        android:background="@drawable/button_round"
+        android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txt_espacio"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/txt_email"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="1dp" />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
