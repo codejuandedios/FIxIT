@@ -148,6 +148,7 @@ public class Fragment_registrarse extends Fragment {
         return conexion;
     }
 
+
     public void AgregarRegistro(){
         try {
 
