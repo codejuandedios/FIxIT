@@ -18,7 +18,7 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
     @Override
     protected Usuario doInBackground(Usuario... datos) {
         String sql = "select carne, nombre, apellido, email, password, id_rol, estado from usuario where email = '"+datos[0].getEmail()+"' and password = '"+datos[0].getPassword() + "'";
-        String host = "192.168.1.13";
+        String host = "192.168.17.170";
         String port = "3306";
         String dbName = "fixit";
         String userName = "root";

@@ -56,41 +56,21 @@
         android:background="@drawable/edit_round"
         android:hint="Apellido" />
 
+
         <EditText
-            android:id="@+id/txtCorreo"
-            android:layout_width="300dp"
+            android:id="@+id/txt_correo"
+            android:layout_width="298dp"
             android:layout_height="40dp"
 
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
             android:background="@drawable/edit_round"
-            android:hint="Correo Electronico" />
+            android:hint="Correo Estudiantil"
+            android:paddingLeft="10dp" />
 
-    <RadioButton
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edit_round"
-        android:text="Alumno"/>
-
-        <RadioButton
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/edit_round"
-            android:text="Maestro" />
-
-
-    <EditText
+        <EditText
         android:id="@+id/txt_password"
         android:layout_width="300dp"
         android:layout_height="40dp"
@@ -116,28 +96,19 @@
         android:background="@drawable/edit_round"
         android:hint="Repetir Contraseña" />
 
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="38dp"
-        android:layout_below="@+id/txt_password"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Registrarse"
-        android:background="@drawable/button_round"
-        android:textAllCaps="false" />
-
-        <TextView
-            android:id="@+id/txt_espacio"
+        <Button
+            android:id="@+id/btnRegistrar"
             android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/txt_email"
+            android:layout_height="38dp"
+            android:layout_below="@+id/txt_password"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="1dp" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_round"
+            android:gravity="center"
+            android:text="Registrarse"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 

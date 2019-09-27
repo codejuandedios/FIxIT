@@ -28,12 +28,12 @@ import java.util.ArrayList;
 public class Fragment_IniciarSesion extends Fragment {
 
 
+
     View vista;
     private EditText txtCorreo;
     private EditText txtPassword;
     private Button btnIngresar;
     private ArrayList<Usuario> usuario = null;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
