@@ -39,5 +39,15 @@
     </string-array>
 
 
+    <string name="error_field_required">CAMPO VACIO</string>
+    <string name="error_not_find_number">Error. Por favor ingrese al menos un número</string>
+    <string name="error_not_find_lowercase_caracter">Error. Por favor ingrese al menos una letra miniscula</string>
+    <string name="error_not_find_uppercase_caracter">Error. Por favor ingrese al menos una letra mayuscula</string>
+    <string name="error_too_short_password">Error. Por favor ingrese una contraseña entre 8 a 16 caracteres</string>
+    <string name="error_spaces">Error. Por favor no ingrese espacios en la contraseña</string>
+
+    <string name="settings_pwd_not_equal">Error. Las contraseñas no coinciden</string>
+    <string name="settings_pwd_equal">Las contraseñas son iguales</string>
+
 
 </resources>
