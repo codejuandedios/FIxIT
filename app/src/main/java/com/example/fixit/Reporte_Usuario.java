@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -26,6 +27,7 @@ import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,13 +36,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mysql.fabric.Response;
+import com.mysql.jdbc.Statement;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -50,7 +55,7 @@ import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static java.security.AccessController.getContext;
 
-public class Reporte_Usuario extends AppCompatActivity {
+public class Reporte_Usuario extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final String CARPETA_PRINCIPAL = "misImagenesApp/";//directorio principal
     private static final String CARPETA_IMAGEN = "imagenes";//carpeta donde se guardan las fotos
@@ -67,6 +72,7 @@ public class Reporte_Usuario extends AppCompatActivity {
     private Bitmap mImageBitmap;
     private String mCurrentPhotoPath;
     private ImageView mImageView;
+    private ResultSet rs = null;
 
     Spinner spinner;
     Spinner spinneredifi;
@@ -81,16 +87,17 @@ public class Reporte_Usuario extends AppCompatActivity {
         setContentView(R.layout.activity_reporte__usuario);
 
         spinner = (Spinner) findViewById(R.id.spinner);
-        String[] Problema = {"Elija su problema","Infraestructura","Equipo","Inmuebles","Otros"};
-        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Problema));
+        ArrayAdapter<CharSequence> adapterTipoProblema = ArrayAdapter.createFromResource(this, R.array.TipoProblema, android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapterTipoProblema);
 
         spinneredifi = (Spinner) findViewById(R.id.spinnerEdificio);
-        String[] Edificios = {"Elija el Edificio","Torre 1","Torre 2","Torre 3","Torre 4"};
-        spinneredifi.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Edificios));
-
         spinnerSal = (Spinner) findViewById(R.id.spinnerSalon);
-        String[] Salones = {"Elija el Salon","Salon 1","Salon 2","Salon 3","Salon 4"};
-        spinnerSal.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Salones));
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.Modulos, android.R.layout.simple_spinner_item);
+        spinneredifi.setAdapter(adapter);
+        spinneredifi.setOnItemSelectedListener(this);
+
 
         btnFoto = findViewById(R.id.btnTomaFoto);
         btnEnviar = findViewById(R.id.btn_Enviar);
@@ -118,6 +125,18 @@ public class Reporte_Usuario extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        int[] Salones = {R.array.Modulo, R.array.F, R.array.E,R.array.M};
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, Salones[position],
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinnerSal.setAdapter(adapter);
+
+    }
+
     private void mostrarDialogOpciones() {
         final CharSequence[] opciones={"Tomar Foto","Elegir de Galeria","Cancelar"};
         final AlertDialog.Builder builder=new AlertDialog.Builder(Reporte_Usuario.this);
@@ -142,6 +161,27 @@ public class Reporte_Usuario extends AppCompatActivity {
         builder.show();
     }
 
+    public void AgregarRegistro(){
+        try {
+            progreso=new ProgressDialog(Reporte_Usuario.this);
+            progreso.setMessage("Cargando...");
+            progreso.show();
+
+            String imagen =convertirImgString(bitmap);
+            PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(fecha, tipoProblema, descripcion, imagen, ubicacion) values(?,?,?,?,?)");
+            pst.setString(1, "FechaPrueba");
+            pst.setString(2, "TipoProblemaPrueba");
+            pst.setString(3, "descripcionPrueba");
+            pst.setString(4, imagen);
+            pst.setString(5, "ubicacionPrueba");
+            pst.executeUpdate();
+            progreso.hide();
+            Toast.makeText(Reporte_Usuario.this,"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
+        }catch (Exception e) {
+            progreso.hide();
+            Toast.makeText(Reporte_Usuario.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
     private void abriCamara() {
         File miFile = new File(Environment.getExternalStorageDirectory(), DIRECTORIO_IMAGEN);
         boolean isCreada = miFile.exists();
@@ -328,27 +368,7 @@ public class Reporte_Usuario extends AppCompatActivity {
 
 
 
-    public void AgregarRegistro(){
-        try {
-            progreso=new ProgressDialog(Reporte_Usuario.this);
-            progreso.setMessage("Cargando...");
-            progreso.show();
 
-            String imagen =convertirImgString(bitmap);
-            PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(fecha, tipoProblema, descripcion, imagen, ubicacion) values(?,?,?,?,?)");
-            pst.setString(1, "FechaPrueba");
-            pst.setString(2, "TipoProblemaPrueba");
-            pst.setString(3, "descripcionPrueba");
-            pst.setString(4, imagen);
-            pst.setString(5, "ubicacionPrueba");
-            pst.executeUpdate();
-            progreso.hide();
-            Toast.makeText(Reporte_Usuario.this,"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
-        }catch (Exception e) {
-            progreso.hide();
-            Toast.makeText(Reporte_Usuario.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private String convertirImgString(Bitmap bitmap) {
 
@@ -362,54 +382,8 @@ public class Reporte_Usuario extends AppCompatActivity {
 
 
 
-
-    }
-   /* public void onclick(View view) {
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivity(cameraIntent);
-        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-            // Create the File where the photo should go
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                Log.i(TAG, "IOException");
-            }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        }
-    }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  // prefix
-                ".jpg",         // suffix
-                storageDir      // directory
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
-        return image;
-    }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            try {
-                mImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.parse(mCurrentPhotoPath));
-                mImageView.setImageBitmap(mImageBitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+}

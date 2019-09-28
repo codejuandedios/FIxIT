@@ -3,4 +3,41 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="action_settings">Settings</string><string name="strTomaFoto">Toma Foto</string>
+
+    <string-array name="Modulos">
+        <item>Modulo</item>
+        <item>F</item>
+        <item>E</item>
+        <item>M</item>
+    </string-array>
+    <string-array name="Modulo">
+        <item>Salon</item>
+    </string-array>
+    <string-array name="F">
+        <item>Salon</item>
+        <item>F101</item>
+        <item>F102</item>
+        <item>F103</item>
+    </string-array>
+    <string-array name="E">
+        <item>Salon</item>
+        <item>E101</item>
+        <item>E102</item>
+        <item>E103</item>
+    </string-array>
+    <string-array name="M">
+        <item>Salon</item>
+        <item>M1</item>
+        <item>M2</item>
+    </string-array>
+    <string-array name="TipoProblema">
+        <item>Tipo de Problema</item>
+        <item>Infraestructura</item>
+        <item>Equipo de Computo</item>
+        <item>Inmuebles</item>
+        <item>Otro</item>
+    </string-array>
+
+
+
 </resources>
