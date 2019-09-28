@@ -2,7 +2,7 @@ package com.example.fixit;
 
 public class Usuario {
     //Atributos de la clase
-    private int carne;
+    private static int carne;
     private String nombre;
     private String apellido;
     private String email;
@@ -28,7 +28,7 @@ public class Usuario {
 
     //Metodos gets y sets
 
-    public int getCarne() {
+    public static int getCarne() {
         return carne;
     }
 

@@ -30,6 +30,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import android.widget.Spinner;
@@ -80,18 +81,20 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
     Button btnEnviar,btnFoto;
     ImageView imgFoto;
     ProgressDialog progreso;
-
+    EditText descripcion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporte__usuario);
 
+        Toast.makeText(Reporte_Usuario.this,Integer.toString(Usuario.getCarne()),Toast.LENGTH_SHORT).show();
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapterTipoProblema = ArrayAdapter.createFromResource(this, R.array.TipoProblema, android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapterTipoProblema);
 
         spinneredifi = (Spinner) findViewById(R.id.spinnerEdificio);
         spinnerSal = (Spinner) findViewById(R.id.spinnerSalon);
+        descripcion = findViewById(R.id.descripcion);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.Modulos, android.R.layout.simple_spinner_item);
@@ -113,6 +116,12 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                descripcion.setText("");
+                imgFoto.setImageResource(R.drawable.camarita);
+                spinner.setSelection(0);
+                spinneredifi.setSelection(0);
+                spinnerSal.setSelection(0);
+
                 AgregarRegistro();
             }
         });
@@ -168,12 +177,13 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
             progreso.show();
 
             String imagen =convertirImgString(bitmap);
-            PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(fecha, tipoProblema, descripcion, imagen, ubicacion) values(?,?,?,?,?)");
-            pst.setString(1, "FechaPrueba");
-            pst.setString(2, "TipoProblemaPrueba");
-            pst.setString(3, "descripcionPrueba");
+            PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(carne, TipoProblema, Descripcion, Imagen, Modulo, Salon ) values(?,?,?,?,?,?)");
+            pst.setInt(1, Usuario.getCarne());
+            pst.setString(2, spinner.getSelectedItem().toString());
+            pst.setString(3, descripcion.getText().toString());
             pst.setString(4, imagen);
-            pst.setString(5, "ubicacionPrueba");
+            pst.setString(5, spinneredifi.getSelectedItem().toString());
+            pst.setString(6, spinnerSal.getSelectedItem().toString());
             pst.executeUpdate();
             progreso.hide();
             Toast.makeText(Reporte_Usuario.this,"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();

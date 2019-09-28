@@ -1,2 +1,3 @@
+//include ':libs:actionbarsherlock'
 include ':app'
 rootProject.name='Fix IT'
