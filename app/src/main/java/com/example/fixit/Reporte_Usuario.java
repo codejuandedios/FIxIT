@@ -87,6 +87,8 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporte__usuario);
 
+        getSupportActionBar().hide();
+
         Toast.makeText(Reporte_Usuario.this,Integer.toString(Usuario.getCarne()),Toast.LENGTH_SHORT).show();
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapterTipoProblema = ArrayAdapter.createFromResource(this, R.array.TipoProblema, android.R.layout.simple_spinner_item);
