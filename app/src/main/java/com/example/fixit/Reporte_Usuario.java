@@ -118,13 +118,14 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AgregarRegistro();
                 descripcion.setText("");
                 imgFoto.setImageResource(R.drawable.camarita);
                 spinner.setSelection(0);
                 spinneredifi.setSelection(0);
                 spinnerSal.setSelection(0);
 
-                AgregarRegistro();
+
             }
         });
 
@@ -179,19 +180,21 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
             progreso.show();
 
             String imagen =convertirImgString(bitmap);
-            PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(carne, TipoProblema, Descripcion, Imagen, Modulo, Salon ) values(?,?,?,?,?,?)");
-            pst.setInt(1, Usuario.getCarne());
-            pst.setString(2, spinner.getSelectedItem().toString());
-            pst.setString(3, descripcion.getText().toString());
-            pst.setString(4, imagen);
-            pst.setString(5, spinneredifi.getSelectedItem().toString());
-            pst.setString(6, spinnerSal.getSelectedItem().toString());
+            PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(carne, TipoProblema, Descripcion, Imagen, Modulo, Salon ) " +
+                            "values( "+Usuario.getCarne()+"," +
+                            "'"+spinner.getSelectedItem().toString()+"'," +
+                            "'"+descripcion.getText().toString()+"'," +
+                            "'"+imagen+"'," +
+                            "'"+spinneredifi.getSelectedItem().toString()+"'," +
+                            "'"+spinnerSal.getSelectedItem().toString()+"')");
+
             pst.executeUpdate();
             progreso.hide();
             Toast.makeText(Reporte_Usuario.this,"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
         }catch (Exception e) {
             progreso.hide();
-            Toast.makeText(Reporte_Usuario.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(Reporte_Usuario.this,e.getMessage(),Toast.LENGTH_SHORT)
+                    .show();
         }
     }
     private void abriCamara() {
