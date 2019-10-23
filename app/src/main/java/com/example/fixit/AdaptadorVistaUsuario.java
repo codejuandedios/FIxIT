@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,14 +33,18 @@ public class AdaptadorVistaUsuario extends RecyclerView.Adapter<AdaptadorVistaUs
         // each data item is just a string in this case
         public ImageView icono;
         public TextView nombre,rol,Estado;
+        public Button editar;
+        Context cont;
 
         public MyViewHolder(View itemView){
             super(itemView);
-
+            cont = itemView.getContext();
             icono = itemView.findViewById(R.id.icono);
             nombre = itemView.findViewById(R.id.lblTipo);
             rol = itemView.findViewById(R.id.lblDescripcion);
             Estado = itemView.findViewById(R.id.lblFecha);
+            editar = itemView.findViewById(R.id.editar);
+
         }
 
     }
@@ -82,6 +87,12 @@ public class AdaptadorVistaUsuario extends RecyclerView.Adapter<AdaptadorVistaUs
             holder.Estado.setText("inactivo");
         }
 
+        holder.editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 

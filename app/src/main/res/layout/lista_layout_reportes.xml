@@ -32,11 +32,11 @@
                 android:layout_marginBottom="83dp"
                 android:text="Tipo de problema"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/lblDescripcion"
-                android:layout_width="232dp"
+                android:layout_width="212dp"
                 android:layout_height="69dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
@@ -44,19 +44,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="43dp"
-                android:layout_marginEnd="147dp"
-                android:layout_marginRight="147dp"
+                android:layout_marginEnd="164dp"
+                android:layout_marginRight="164dp"
                 android:layout_marginBottom="10dp"
                 android:text="Aqui se mostrara una breve descripcion del problema"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/lblFecha"
-                android:layout_width="107dp"
+                android:layout_width="97dp"
                 android:layout_height="26dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
@@ -64,55 +64,37 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="283dp"
-                android:layout_marginLeft="283dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="21dp"
-                android:layout_marginRight="21dp"
-                android:layout_marginBottom="86dp"
+                android:layout_marginStart="252dp"
+                android:layout_marginLeft="252dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="61dp"
+                android:layout_marginRight="61dp"
+                android:layout_marginBottom="83dp"
                 android:text="2019-05-15"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="18sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/lblEstado"
-                android:layout_width="107dp"
-                android:layout_height="26dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="278dp"
-                android:layout_marginLeft="278dp"
-                android:layout_marginTop="88dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginRight="26dp"
-                android:layout_marginBottom="8dp"
-                android:text="no solucionado"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="14sp"
                 android:textStyle="italic" />
 
-            <ImageView
-                android:id="@+id/color"
-                android:layout_width="24dp"
-                android:layout_height="match_parent"
+            <TextView
+                android:id="@+id/lblEstado"
+                android:layout_width="147dp"
+                android:layout_height="24dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="-1dp"
-                android:layout_marginLeft="-1dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="388dp"
-                android:layout_marginRight="388dp"
-                android:layout_marginBottom="0dp"
-                app:srcCompat="@color/colorAccent" />
+                android:layout_marginStart="242dp"
+                android:layout_marginLeft="242dp"
+                android:layout_marginTop="82dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginBottom="16dp"
+                android:text="no solucionado"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

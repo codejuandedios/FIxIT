@@ -24,6 +24,7 @@
         <activity
             android:name=".MenuAdministrador"
             android:label="@string/title_activity_menu_administrador"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"

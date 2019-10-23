@@ -1,6 +1,7 @@
 package com.example.fixit;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,6 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            color = itemView.findViewById(R.id.color);
             tipoProblema = itemView.findViewById(R.id.lblTipo);
             Descripcion = itemView.findViewById(R.id.lblDescripcion);
             Fecha = itemView.findViewById(R.id.lblFecha);
@@ -70,15 +70,12 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         holder.Descripcion.setText(report.getDescripcion());
         holder.Fecha.setText(report.getFecha());
 
+
         if (report.getEstado() == 3) {
-            Glide.with(mycont)
-                    .load(R.color.colorAccent)
-                    .into(holder.color);
+
             holder.Estado.setText("no solucionado");
         } else if (report.getEstado() == 4) {
-            Glide.with(mycont)
-                    .load(R.color.colorPrimary)
-                    .into(holder.color);
+
             holder.Estado.setText("solucionado");
         }
 

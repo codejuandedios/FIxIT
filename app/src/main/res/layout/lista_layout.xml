@@ -6,18 +6,18 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="144dp" >
+        android:layout_height="185dp">
 
         <RelativeLayout
             android:id="@+id/usuarioCardLayout"
             android:layout_width="match_parent"
-            android:layout_height="122dp"
+            android:layout_height="150dp"
             android:background="#D5CACACA">
 
             <ImageView
                 android:id="@+id/icono"
-                android:layout_width="84dp"
-                android:layout_height="106dp"
+                android:layout_width="wrap_content"
+                android:layout_height="88dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
@@ -29,7 +29,7 @@
                 android:layout_marginTop="11dp"
                 android:layout_marginEnd="308dp"
                 android:layout_marginRight="308dp"
-                android:layout_marginBottom="5dp" />
+                android:layout_marginBottom="51dp" />
 
             <TextView
                 android:id="@+id/lblTipo"
@@ -41,12 +41,12 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="113dp"
-                android:layout_marginLeft="113dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="74dp"
+                android:layout_marginStart="111dp"
+                android:layout_marginLeft="111dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginBottom="106dp"
                 android:text="hola"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="24sp" />
@@ -54,43 +54,63 @@
             <TextView
                 android:id="@+id/lblDescripcion"
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="29dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="114dp"
-                android:layout_marginLeft="114dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginRight="19dp"
-                android:layout_marginBottom="45dp"
+                android:layout_marginStart="111dp"
+                android:layout_marginLeft="111dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginBottom="76dp"
                 android:text="hola"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/lblFecha"
-                android:layout_width="88dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="29dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="262dp"
-                android:layout_marginLeft="262dp"
-                android:layout_marginTop="86dp"
-                android:layout_marginEnd="-22dp"
-                android:layout_marginRight="-22dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="252dp"
+                android:layout_marginLeft="252dp"
+                android:layout_marginTop="76dp"
+                android:layout_marginEnd="-12dp"
+                android:layout_marginRight="-12dp"
+                android:layout_marginBottom="45dp"
                 android:text="hola"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="18sp"
                 android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/editar"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="106dp"
+                android:layout_marginEnd="304dp"
+                android:layout_marginRight="304dp"
+                android:layout_marginBottom="10dp"
+                android:text="Editar"
+                android:textSize="18sp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

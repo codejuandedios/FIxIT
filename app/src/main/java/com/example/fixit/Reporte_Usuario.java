@@ -89,7 +89,6 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
 
         getSupportActionBar().hide();
 
-        Toast.makeText(Reporte_Usuario.this,Integer.toString(Usuario.getCarne()),Toast.LENGTH_SHORT).show();
         spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapterTipoProblema = ArrayAdapter.createFromResource(this, R.array.TipoProblema, android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapterTipoProblema);
@@ -181,7 +180,7 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
 
             String imagen =convertirImgString(bitmap);
             PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(carne, TipoProblema, Descripcion, Imagen, Modulo, Salon ) " +
-                            "values( "+Usuario.getCarne()+"," +
+                            "values( "+UsuarioPerfil.getCarne()+"," +
                             "'"+spinner.getSelectedItem().toString()+"'," +
                             "'"+descripcion.getText().toString()+"'," +
                             "'"+imagen+"'," +

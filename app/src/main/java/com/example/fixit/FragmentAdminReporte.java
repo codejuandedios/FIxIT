@@ -4,10 +4,23 @@ package com.example.fixit;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -15,7 +28,13 @@ import android.view.ViewGroup;
  */
 public class FragmentAdminReporte extends Fragment {
 
-
+    List<Reporte> ListaReportes;
+    RecyclerView recyclerView;
+    Connection conexionMySql = null;
+    private Statement st = null;
+    private ResultSet rs = null;
+    private Usuario columnas = null;
+    View vista;
     public FragmentAdminReporte() {
         // Required empty public constructor
     }
@@ -25,7 +44,65 @@ public class FragmentAdminReporte extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_admin_reporte, container, false);
+        vista = inflater.inflate(R.layout.fragment_fragment_admin_reporte, container, false);
+        recyclerView= vista.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        ListaReportes = new ArrayList<>();
+
+        cargarReportes();
+        return vista;
     }
 
+    public Connection conexionBD(){
+        Connection conexion = null;
+        String host = "192.168.1.27";
+        String port = "3306";
+        String dbName = "fixit";
+        String userName = "root";
+        String password = "admon";
+        try{
+
+            StrictMode.ThreadPolicy policy= new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            conexion = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbName, userName, password);
+
+        }catch (Exception e) {
+            Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+        return conexion;
+    }
+    private void cargarReportes(){
+
+        try{
+            String sql = "select * from reporte";
+            st = conexionBD().createStatement();
+            rs = st.executeQuery(sql);
+            if(rs.first())
+            {
+                do
+                {
+
+                    ListaReportes.add(new Reporte(
+                            rs.getInt("idReporte"),
+                            rs.getInt("carne"),
+                            rs.getString("TipoProblema"),
+                            rs.getString("Descripcion"),
+                            rs.getString("Imagen"),
+                            rs.getString("Modulo"),
+                            rs.getString("Salon"),
+                            rs.getString("fecha"),
+                            rs.getInt("estado")));
+                }while(rs.next());
+            }
+
+            AdaptadorVistaReporte adapter = new AdaptadorVistaReporte(getContext(), ListaReportes);
+            recyclerView.setAdapter(adapter);
+        } catch (SQLException ex) {
+            Log.d("Error", ex.getMessage());
+        }
+
+    }
 }

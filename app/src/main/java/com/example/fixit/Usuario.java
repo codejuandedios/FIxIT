@@ -2,10 +2,10 @@ package com.example.fixit;
 
 public class Usuario {
     //Atributos de la clase
-    private static int carne;
-    private static String nombre;
-    private static String apellido;
-    private static String email;
+    private int carne;
+    private String nombre;
+    private String apellido;
+    private String email;
     private String password;
     private int id_rol;
     private int estado;
@@ -28,7 +28,7 @@ public class Usuario {
 
     //Metodos gets y sets
 
-    public static int getCarne() {
+    public int getCarne() {
         return carne;
     }
 
@@ -36,7 +36,7 @@ public class Usuario {
         this.carne = carne;
     }
 
-    public static String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -44,7 +44,7 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public static String getApellido() {
+    public String getApellido() {
         return apellido;
     }
 
@@ -52,7 +52,7 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 

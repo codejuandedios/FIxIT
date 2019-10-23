@@ -74,7 +74,7 @@ public class verReportes extends AppCompatActivity {
                     ListaReportes.add(new Reporte(
                             rs.getInt("idReporte"),
                             rs.getInt("carne"),
-                            rs.getString("TipoReporte"),
+                            rs.getString("TipoProblema"),
                             rs.getString("Descripcion"),
                             rs.getString("Imagen"),
                             rs.getString("Modulo"),

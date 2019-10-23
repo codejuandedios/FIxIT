@@ -14,6 +14,7 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
     private Statement st = null;
     private ResultSet rs = null;
     private Usuario columnas = null;
+    private UsuarioPerfil perfil = null;
 
     @Override
     protected Usuario doInBackground(Usuario... datos) {
@@ -33,6 +34,7 @@ public class Login extends AsyncTask<Usuario, Void, Usuario> {
                 {
 
                    columnas = new Usuario(rs.getInt("carne"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("email"), rs.getString("password"), rs.getInt("id_rol"), rs.getInt("estado"));
+                   perfil = new UsuarioPerfil(rs.getInt("carne"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("email"), rs.getString("password"), rs.getInt("id_rol"), rs.getInt("estado"));
                 }while(rs.next());
             }
         } catch (SQLException ex) {
