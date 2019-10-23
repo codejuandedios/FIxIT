@@ -5,17 +5,18 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_reporte"
-            android:icon="@drawable/ic_menu_reportes"
-            android:title="@string/menu_home" />
-        <item
             android:id="@+id/nav_adminReportes"
             android:icon="@drawable/ic_menu_adminreportes"
-            android:title="@string/menu_gallery" />
+            android:title="Administrar Reportes" />
         <item
             android:id="@+id/nav_adminUsuarios"
             android:icon="@drawable/ic_menu_usuarios"
-            android:title="@string/menu_slideshow" />
+            android:title="Administrar Usuarios" />
+
+        <item
+            android:id="@+id/nav_Usuarios"
+            android:icon="@drawable/ic_menu_listausuarios"
+            android:title="Listado de Usuarios" />
 
     </group>
 
