@@ -1,29 +1,15 @@
 package com.example.fixit;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.MenuItem;
 import android.view.View;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import com.google.android.material.navigation.NavigationView;
-
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -59,7 +45,7 @@ public class MenuAdministrador extends AppCompatActivity
 
         // PARA ASIGNAR EL FRAGMENT A MOSTRAR DE INICIO
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contenedor,new FragmentReportes()).commit();
+        fragmentManager.beginTransaction().replace(R.id.contenedor,new FragmentAdminReporte()).commit();
     }
 
     @Override
@@ -82,12 +68,12 @@ public class MenuAdministrador extends AppCompatActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (id == R.id.nav_reporte) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new FragmentReportes()).commit();
-        } else if (id == R.id.nav_adminReportes) {
+        if (id == R.id.nav_adminReportes) {
             fragmentManager.beginTransaction().replace(R.id.contenedor,new FragmentAdminReporte()).commit();
-        } else if (id == R.id.nav_adminUsuarios) {
+       } else if (id == R.id.nav_adminUsuarios) {
             fragmentManager.beginTransaction().replace(R.id.contenedor,new FragmentAdminUsuarios()).commit();
+        }else if (id == R.id.nav_Usuarios) {
+            fragmentManager.beginTransaction().replace(R.id.contenedor,new FragmentListaUsuarios()).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
