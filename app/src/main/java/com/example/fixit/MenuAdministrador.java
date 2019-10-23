@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class MenuAdministrador extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -41,6 +42,14 @@ public class MenuAdministrador extends AppCompatActivity
 
         // HABILITA LOS COLORES DE LOS ICONOS
         navigationView.setItemIconTintList(null);
+
+
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.lblusuario);
+        TextView navCorreo = (TextView) headerView.findViewById(R.id.lblcorreo);
+        navUsername.setText(Usuario.getNombre() + " "+Usuario.getApellido());
+        navCorreo.setText(Usuario.getEmail());
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

@@ -69,7 +69,7 @@ public class Fragment_IniciarSesion extends Fragment {
                     } else if(user.getIdRol() == 3 && user.getEstado() == 1){
                         startActivity(navegacion3);
 
-                        startActivity(navegacion2);
+                        //startActivity(navegacion2);
 
                     }
                 } else{
