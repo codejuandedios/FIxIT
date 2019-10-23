@@ -51,6 +51,7 @@ public class Fragment_IniciarSesion extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent navegacion = new Intent(getContext(), Reporte_Usuario.class);
+                Intent navegacion3 = new Intent(getContext(), MenuAdministrador.class);
                // startActivity(navegacion);
 
                Usuario user = validarLogin();
@@ -62,7 +63,7 @@ public class Fragment_IniciarSesion extends Fragment {
                     } else if(user.getIdRol() == 2 && user.getEstado() == 1){
                         startActivity(navegacion);
                     } else if(user.getIdRol() == 3 && user.getEstado() == 1){
-                        startActivity(navegacion);
+                        startActivity(navegacion3);
                     }
                 } else{
                     Toast.makeText(getContext(), "Usuario y/o contraseña incorrectos", Toast.LENGTH_LONG).show();
