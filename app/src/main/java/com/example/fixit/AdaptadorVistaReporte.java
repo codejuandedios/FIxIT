@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +16,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaReporte.MyViewHolder> {
+public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaReporte.MyViewHolder> implements View.OnClickListener {
 
     private Context mycont;
     private List<Reporte> ListaReportes;
@@ -26,6 +27,11 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         this.ListaReportes = ListaReportes;
     }
 
+    @Override
+    public void onClick(View v) {
+        
+    }
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -34,6 +40,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         // each data item is just a string in this case
         public ImageView color;
         public TextView tipoProblema, Descripcion, Estado, Fecha;
+        public Button detalles;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -42,6 +49,8 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
             Descripcion = itemView.findViewById(R.id.lblDescripcion);
             Fecha = itemView.findViewById(R.id.lblFecha);
             Estado = itemView.findViewById(R.id.lblEstado);
+            detalles = itemView.findViewById(R.id.detalles);
+
         }
 
     }
@@ -70,6 +79,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         holder.Descripcion.setText(report.getDescripcion());
         holder.Fecha.setText(report.getFecha());
 
+        holder.detalles.setOnClickListener(this);
 
         if (report.getEstado() == 3) {
 
