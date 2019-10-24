@@ -1,6 +1,7 @@
 package com.example.fixit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaReporte.MyViewHolder> implements View.OnClickListener {
+public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaReporte.MyViewHolder>{
 
     private Context mycont;
     private List<Reporte> ListaReportes;
@@ -27,20 +28,16 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         this.ListaReportes = ListaReportes;
     }
 
-    @Override
-    public void onClick(View v) {
-        
-    }
-
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public ImageView color;
         public TextView tipoProblema, Descripcion, Estado, Fecha;
         public Button detalles;
+        //context
+        Context context;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -50,11 +47,21 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
             Fecha = itemView.findViewById(R.id.lblFecha);
             Estado = itemView.findViewById(R.id.lblEstado);
             detalles = itemView.findViewById(R.id.detalles);
+            context = itemView.getContext();
 
         }
 
-    }
+        void setOnClickListener(){
+            detalles.setOnClickListener(this);
 
+
+
+        }
+        @Override
+        public void onClick(View v) {
+            Intent navegacion = new Intent(context, Reporte_Usuario.class);
+        }
+    }
 
     // Create new views (invoked by the layout manager)
     @Override
@@ -79,7 +86,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         holder.Descripcion.setText(report.getDescripcion());
         holder.Fecha.setText(report.getFecha());
 
-        holder.detalles.setOnClickListener(this);
+        holder.setOnClickListener();
 
         if (report.getEstado() == 3) {
 
