@@ -4,6 +4,7 @@ package com.example.fixit;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,7 @@ public class FragmentAdminReporte extends Fragment {
     private Statement st = null;
     private ResultSet rs = null;
     private Usuario columnas = null;
+
     View vista;
     public FragmentAdminReporte() {
         // Required empty public constructor
@@ -51,7 +53,13 @@ public class FragmentAdminReporte extends Fragment {
 
         ListaReportes = new ArrayList<>();
 
-        cargarReportes();
+        Fragment hola = new reporteindividual();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.contenedor, hola);
+        transaction.addToBackStack(null);
+
+
+        cargarReportes(transaction);
         return vista;
     }
 
@@ -74,7 +82,7 @@ public class FragmentAdminReporte extends Fragment {
         }
         return conexion;
     }
-    private void cargarReportes(){
+    private void cargarReportes(FragmentTransaction transaction){
 
         try{
             String sql = "select * from reporte";
@@ -98,7 +106,7 @@ public class FragmentAdminReporte extends Fragment {
                 }while(rs.next());
             }
 
-            AdaptadorVistaReporte adapter = new AdaptadorVistaReporte(getContext(), ListaReportes);
+            AdaptadorVistaReporte adapter = new AdaptadorVistaReporte(getContext(), ListaReportes, transaction);
             recyclerView.setAdapter(adapter);
         } catch (SQLException ex) {
             Log.d("Error", ex.getMessage());

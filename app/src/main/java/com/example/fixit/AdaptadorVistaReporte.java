@@ -1,8 +1,7 @@
 package com.example.fixit;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,22 +9,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaReporte.MyViewHolder>{
+public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaReporte.MyViewHolder> {
 
     private Context mycont;
     private List<Reporte> ListaReportes;
+    public static FragmentTransaction transaction;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdaptadorVistaReporte(Context mycont, List<Reporte> ListaReportes) {
+    public AdaptadorVistaReporte(Context mycont, List<Reporte> ListaReportes, FragmentTransaction transaction) {
         this.mycont = mycont;
         this.ListaReportes = ListaReportes;
+        this.transaction = transaction;
     }
 
     // Provide a reference to the views for each data item
@@ -34,32 +33,31 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public ImageView color;
-        public TextView tipoProblema, Descripcion, Estado, Fecha;
+        public TextView tipoProblema, Descripcion, Estado, Fecha, IdReporte;
         public Button detalles;
+
         //context
-        Context context;
+        Context cont;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
+            cont = itemView.getContext();
             tipoProblema = itemView.findViewById(R.id.lblTipo);
             Descripcion = itemView.findViewById(R.id.lblDescripcion);
             Fecha = itemView.findViewById(R.id.lblFecha);
             Estado = itemView.findViewById(R.id.lblEstado);
             detalles = itemView.findViewById(R.id.detalles);
-            context = itemView.getContext();
+            IdReporte = itemView.findViewById(R.id.idReporte);
 
         }
-
         void setOnClickListener(){
             detalles.setOnClickListener(this);
-
-
-
         }
+
         @Override
         public void onClick(View v) {
-            Intent navegacion = new Intent(context, Reporte_Usuario.class);
+            reporteindividual.carne = (String) IdReporte.getText();
+            AdaptadorVistaReporte.transaction.commit();
         }
     }
 
@@ -70,21 +68,20 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = null;
         view = inflater.inflate(R.layout.lista_layout_reportes, null);
-
         return new MyViewHolder(view);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Reporte report = ListaReportes.get(position);
+         Reporte report = ListaReportes.get(position);
 
         //cargamos la imagen
-
 
         holder.tipoProblema.setText(report.getTipoProblema());
         holder.Descripcion.setText(report.getDescripcion());
         holder.Fecha.setText(report.getFecha());
+        holder.IdReporte.setText(String.valueOf(report.getIdReporte()));
 
         holder.setOnClickListener();
 

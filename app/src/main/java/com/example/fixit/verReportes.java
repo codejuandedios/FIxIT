@@ -84,8 +84,8 @@ public class verReportes extends AppCompatActivity {
                 }while(rs.next());
             }
 
-            AdaptadorVistaReporte adapter = new AdaptadorVistaReporte(verReportes.this, ListaReportes);
-            recyclerView.setAdapter(adapter);
+           // AdaptadorVistaReporte adapter = new AdaptadorVistaReporte(verReportes.this, ListaReportes, tra);
+           // recyclerView.setAdapter(adapter);
         } catch (SQLException ex) {
             Log.d("Error", ex.getMessage());
         }

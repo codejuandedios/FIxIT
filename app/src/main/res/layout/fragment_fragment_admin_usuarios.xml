@@ -6,7 +6,16 @@
     tools:context=".FragmentAdminUsuarios">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+        <TextView
         android:id="@+id/lblTitulo"
         android:layout_width="165dp"
         android:layout_height="30dp"
@@ -18,6 +27,7 @@
         android:textColorLink="@android:color/background_dark"
         android:textSize="18sp"
         android:textStyle="normal" />
+
     <EditText
         android:id="@+id/txtBuscarCarne"
         android:layout_width="160dp"
@@ -35,7 +45,7 @@
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginLeft="215dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="-40dp"
         android:background="@drawable/button_round"
         android:text="Buscar" />
 
@@ -44,7 +54,7 @@
         android:layout_width="246dp"
         android:layout_height="30dp"
         android:layout_marginLeft="75dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="20dp"
         android:text="Datos de Usuario a cambiar rol"
         android:textColor="@android:color/background_dark"
         android:textColorHighlight="@android:color/background_dark"
@@ -58,24 +68,38 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="20dp"
         android:paddingLeft="10dp"
         android:background="@drawable/edit_round"
         android:inputType="number"
         android:maxLength="6"
         android:hint="Carné" />
     <EditText
-        android:id="@+id/txtCorreo"
+    android:id="@+id/txtCorreo"
+    android:layout_width="300dp"
+    android:layout_height="40dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/edit_round"
+    android:drawablePadding="10dp"
+    android:paddingLeft="10dp"
+    android:hint="Correo Electronico" />
+
+    <EditText
+        android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_round"
         android:drawablePadding="10dp"
         android:paddingLeft="10dp"
-        android:hint="Correo Electronico" />
+        android:hint="Password" />
+
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="300dp"
@@ -83,7 +107,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:digits="a b c d e f g h i j k l m n ñ o p q r s t u v w x y z A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z é á í ó ú Á É Í Ó Ú "
         android:background="@drawable/edit_round"
@@ -96,7 +120,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
         android:background="@drawable/edit_round"
         android:hint="Apellido" />
@@ -105,20 +129,22 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="365dp" />
+        android:layout_marginTop="10dp" />
     <Spinner
         android:id="@+id/spinnerEstado"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="420dp" />
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/btnModificar"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginLeft="130dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="10dp"
         android:text="Modificar"
         android:background="@drawable/button_round"/>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

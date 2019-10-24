@@ -56,7 +56,7 @@
 
             <TextView
                 android:id="@+id/lblFecha"
-                android:layout_width="97dp"
+                android:layout_width="160dp"
                 android:layout_height="26dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
@@ -67,8 +67,8 @@
                 android:layout_marginStart="249dp"
                 android:layout_marginLeft="249dp"
                 android:layout_marginTop="11dp"
-                android:layout_marginEnd="64dp"
-                android:layout_marginRight="64dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
                 android:layout_marginBottom="85dp"
                 android:text="2019-05-15"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -99,21 +99,27 @@
             <Button
                 android:id="@+id/detalles"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="98dp"
-                android:layout_height="66dp"
+                android:layout_width="171dp"
+                android:layout_height="67dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="240dp"
-                android:layout_marginLeft="240dp"
-                android:layout_marginTop="43dp"
-                android:layout_marginEnd="73dp"
-                android:layout_marginRight="73dp"
-                android:layout_marginBottom="13dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="-10dp"
+                android:layout_marginRight="-10dp"
+                android:layout_marginBottom="5dp"
                 android:text="VER DETALLES" />
+
+            <TextView
+                android:id="@+id/idReporte"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="TextView" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
