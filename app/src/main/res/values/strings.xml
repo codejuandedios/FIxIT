@@ -39,6 +39,19 @@
         <item>Otro</item>
     </string-array>
 
+    <string-array name="TipodeRolUsuario">
+        <item>Seleccione un Rol</item>
+        <item>Usuario</item>
+        <item>Moderador</item>
+        <item>Administrador</item>
+    </string-array>
+
+    <string-array name="EstadoUsuario">
+        <item>Seleccione un estado</item>
+        <item>Activo</item>
+        <item>Inactivo</item>
+    </string-array>
+
 
     <string name="error_field_required">CAMPO VACIO</string>
     <string name="error_not_find_number">Error. Por favor ingrese al menos un número</string>
