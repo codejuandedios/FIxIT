@@ -31,7 +31,6 @@
         android:background="@drawable/edit_round"/>
 
     <Button
-        android:id="@+id/buscar"
         android:id="@+id/btnBuscarCarne"
         android:layout_width="120dp"
         android:layout_height="40dp"
@@ -53,7 +52,7 @@
         android:textSize="18sp"
         android:textStyle="normal" />
     <EditText
-        android:id="@+id/txtcarneRol"
+        android:id="@+id/txtcarne"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -66,7 +65,7 @@
         android:maxLength="6"
         android:hint="Carné" />
     <EditText
-        android:id="@+id/txtCorreoRol"
+        android:id="@+id/txtCorreo"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -78,7 +77,7 @@
         android:paddingLeft="10dp"
         android:hint="Correo Electronico" />
     <EditText
-        android:id="@+id/txtNombreRol"
+        android:id="@+id/txtNombre"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
@@ -90,7 +89,7 @@
         android:background="@drawable/edit_round"
         android:hint="Nombre" />
     <EditText
-        android:id="@+id/txtApellidoRol"
+        android:id="@+id/txtApellido"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:digits="a b c d e f g h i j k l m n ñ o p q r s t u v w x y z A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z é á í ó ú Á É Í Ó Ú"
@@ -115,15 +114,7 @@
         android:layout_marginTop="420dp" />
 
     <Button
-        android:id="@+id/actualizar"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="490dp"
-        android:background="@drawable/button_round"
-        android:text="ACTUALIZAR" />
-    <Button
-        android:id="@+id/btnModificarRol"
+        android:id="@+id/btnModificar"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginLeft="130dp"
