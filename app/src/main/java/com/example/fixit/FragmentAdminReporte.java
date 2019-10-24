@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -53,13 +54,9 @@ public class FragmentAdminReporte extends Fragment {
 
         ListaReportes = new ArrayList<>();
 
-        Fragment hola = new reporteindividual();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.contenedor, hola);
-        transaction.addToBackStack(null);
 
 
-        cargarReportes(transaction);
+        cargarReportes();
         return vista;
     }
 
@@ -82,10 +79,10 @@ public class FragmentAdminReporte extends Fragment {
         }
         return conexion;
     }
-    private void cargarReportes(FragmentTransaction transaction){
+    private void cargarReportes(){
 
         try{
-            String sql = "select * from reporte";
+            String sql = "SELECT reporte.idReporte, reporte.carne, usuario.nombre, usuario.apellido, reporte.TipoProblema, reporte.Descripcion, reporte.Imagen, reporte.Salon, reporte.Modulo, reporte.fecha, reporte.estado FROM reporte, usuario WHERE reporte.carne = usuario.carne and reporte.estado!=2";
             st = conexionBD().createStatement();
             rs = st.executeQuery(sql);
             if(rs.first())
@@ -96,15 +93,23 @@ public class FragmentAdminReporte extends Fragment {
                     ListaReportes.add(new Reporte(
                             rs.getInt("idReporte"),
                             rs.getInt("carne"),
+                            rs.getString("nombre"),
+                            rs.getString("apellido"),
                             rs.getString("TipoProblema"),
                             rs.getString("Descripcion"),
-                            rs.getString("Imagen"),
+                            rs.getBlob("Imagen"),
                             rs.getString("Modulo"),
                             rs.getString("Salon"),
                             rs.getString("fecha"),
                             rs.getInt("estado")));
+
                 }while(rs.next());
             }
+
+            Fragment hola = new reporteindividual(ListaReportes);
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor, hola);
+            transaction.addToBackStack(null);
 
             AdaptadorVistaReporte adapter = new AdaptadorVistaReporte(getContext(), ListaReportes, transaction);
             recyclerView.setAdapter(adapter);

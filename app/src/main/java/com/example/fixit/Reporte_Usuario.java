@@ -95,7 +95,7 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
 
         spinneredifi = (Spinner) findViewById(R.id.spinnerEdificio);
         spinnerSal = (Spinner) findViewById(R.id.spinnerSalon);
-        descripcion = findViewById(R.id.descripcion);
+        descripcion = findViewById(R.id.txtdescripcion);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.Modulos, android.R.layout.simple_spinner_item);

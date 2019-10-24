@@ -52,6 +52,15 @@
         <item>Inactivo</item>
     </string-array>
 
+    <string-array name="EstadoReporte">
+        <item>Seleccione un estado</item>
+        <item>Inactivo</item>
+        <item>Sin solucionar</item>
+        <item>Solucionado</item>
+    </string-array>
+
+
+
 
     <string name="error_field_required">CAMPO VACIO</string>
     <string name="error_not_find_number">Error. Por favor ingrese al menos un número</string>

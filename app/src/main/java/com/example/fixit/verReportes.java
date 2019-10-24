@@ -37,7 +37,7 @@ public class verReportes extends AppCompatActivity {
 
         ListaReportes = new ArrayList<>();
 
-        cargarReportes();
+       //cargarReportes();
 
     }
 
@@ -60,7 +60,7 @@ public class verReportes extends AppCompatActivity {
         }
         return conexion;
     }
-    private void cargarReportes(){
+   /** private void cargarReportes(){
 
         try{
             String sql = "select * from reporte";
@@ -90,5 +90,5 @@ public class verReportes extends AppCompatActivity {
             Log.d("Error", ex.getMessage());
         }
 
-    }
+    }**/
 }

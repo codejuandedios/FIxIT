@@ -33,7 +33,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public ImageView color;
-        public TextView tipoProblema, Descripcion, Estado, Fecha, IdReporte;
+        public TextView tipoProblema, Descripcion, Estado, Fecha, posicion;
         public Button detalles;
 
         //context
@@ -47,7 +47,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
             Fecha = itemView.findViewById(R.id.lblFecha);
             Estado = itemView.findViewById(R.id.lblEstado);
             detalles = itemView.findViewById(R.id.detalles);
-            IdReporte = itemView.findViewById(R.id.idReporte);
+            posicion = itemView.findViewById(R.id.idReporte);
 
         }
         void setOnClickListener(){
@@ -56,7 +56,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
 
         @Override
         public void onClick(View v) {
-            reporteindividual.carne = (String) IdReporte.getText();
+            reporteindividual.posicion = (String) posicion.getText();
             AdaptadorVistaReporte.transaction.commit();
         }
     }
@@ -81,7 +81,7 @@ public class AdaptadorVistaReporte extends RecyclerView.Adapter<AdaptadorVistaRe
         holder.tipoProblema.setText(report.getTipoProblema());
         holder.Descripcion.setText(report.getDescripcion());
         holder.Fecha.setText(report.getFecha());
-        holder.IdReporte.setText(String.valueOf(report.getIdReporte()));
+        holder.posicion.setText(String.valueOf(position));
 
         holder.setOnClickListener();
 
