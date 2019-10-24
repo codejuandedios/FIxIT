@@ -57,7 +57,7 @@ public class FragmentAdminReporte extends Fragment {
 
     public Connection conexionBD(){
         Connection conexion = null;
-        String host = "192.168.1.27";
+        String host = "192.168.1.13";
         String port = "3306";
         String dbName = "fixit";
         String userName = "root";
