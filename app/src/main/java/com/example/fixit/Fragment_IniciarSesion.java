@@ -54,7 +54,7 @@ public class Fragment_IniciarSesion extends Fragment {
 
                 Intent navegacion3 = new Intent(getContext(), MenuAdministrador.class);
 
-                Intent navegacion2 = new Intent(getContext(), verReportes.class);
+                Intent navegacion2 = new Intent(getContext(), MenuModerador.class);
 
                // startActivity(navegacion);
 
@@ -65,7 +65,7 @@ public class Fragment_IniciarSesion extends Fragment {
                     } else if(user.getIdRol() == 1 && user.getEstado() == 1){
                         startActivity(navegacion);
                     } else if(user.getIdRol() == 2 && user.getEstado() == 1){
-                        startActivity(navegacion);
+                        startActivity(navegacion2);
                     } else if(user.getIdRol() == 3 && user.getEstado() == 1){
                         startActivity(navegacion3);
 
