@@ -13,9 +13,12 @@
         tools:context=".FragmentListaUsuarios">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id = "@+id/recyclerView"
-            android:layout_width = "match_parent"
-            android:layout_height = "match_parent" />
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#C0CA33"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

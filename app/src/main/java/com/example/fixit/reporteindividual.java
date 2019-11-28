@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.ByteArrayInputStream;
 import java.sql.Blob;
 import java.sql.Connection;
@@ -69,13 +71,13 @@ public class reporteindividual extends Fragment {
         foto= vista.findViewById(R.id.imageView2);
 
 
-        try {
+       try {
             Blob myblob= repindividual.getImagen();
             int bloblenght = (int) repindividual.getImagen().length();
             byte[] myblobAsBytes = myblob.getBytes(1, bloblenght);
             Bitmap bmp = BitmapFactory.decodeByteArray(myblobAsBytes,0, bloblenght);
             foto.setImageBitmap(bmp);
-            Toast.makeText(getContext(),"REPORTE ACTUALIZADO EXITOSAMENTE"+bloblenght,Toast.LENGTH_SHORT).show();
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,6 +97,19 @@ public class reporteindividual extends Fragment {
         return vista;
     }
     public void actualizar(){
+        try {
+            Blob myblob= repindividual.getImagen();
+            int bloblenght = (int) repindividual.getImagen().length();
+            byte[] myblobAsBytes = myblob.getBytes(1, bloblenght);
+            Bitmap bmp = BitmapFactory.decodeByteArray(myblobAsBytes,0, bloblenght);
+            foto.setImageBitmap(bmp);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(),"jelooooou",Toast.LENGTH_SHORT).show();
+        }
+
 
         String sql = "UPDATE reporte SET "+
                 "estado="+(estado.getSelectedItemPosition()+1)+" WHERE  idReporte="+Integer.parseInt(id.getText().toString());
@@ -112,7 +127,7 @@ public class reporteindividual extends Fragment {
     }
     public Connection conexionBD(){
         Connection conexion = null;
-        String host = "192.168.1.13";
+        String host = "192.168.43.38";
         String port = "3306";
         String dbName = "fixit";
         String userName = "root";

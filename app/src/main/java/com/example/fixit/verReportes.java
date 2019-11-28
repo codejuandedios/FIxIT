@@ -43,7 +43,7 @@ public class verReportes extends AppCompatActivity {
 
     public Connection conexionBD(){
         Connection conexion = null;
-        String host = "192.168.1.13";
+        String host = "192.168.43.38";
         String port = "3306";
         String dbName = "fixit";
         String userName = "root";

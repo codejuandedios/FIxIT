@@ -41,6 +41,7 @@ import com.mysql.jdbc.Statement;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Array;
 import java.sql.Connection;
@@ -174,22 +175,27 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
 
     public void AgregarRegistro(){
         try {
+            FileInputStream input = null;
             progreso=new ProgressDialog(Reporte_Usuario.this);
             progreso.setMessage("Cargando...");
             progreso.show();
 
-            String imagen =convertirImgString(bitmap);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            input = new FileInputStream(new File(path));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            byte[] bArray = bos.toByteArray();
             PreparedStatement pst = conexionBD().prepareStatement("insert into reporte(carne, TipoProblema, Descripcion, Imagen, Modulo, Salon ) " +
                             "values( "+UsuarioPerfil.getCarne()+"," +
                             "'"+spinner.getSelectedItem().toString()+"'," +
                             "'"+descripcion.getText().toString()+"'," +
-                            "'"+imagen+"'," +
+                            "?," +
                             "'"+spinneredifi.getSelectedItem().toString()+"'," +
                             "'"+spinnerSal.getSelectedItem().toString()+"')");
+            pst.setBinaryStream(1, input);
 
             pst.executeUpdate();
             progreso.hide();
-            Toast.makeText(Reporte_Usuario.this,"REGISTRO EXITOSO",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Reporte_Usuario.this,"ENVIO EXITOSO",Toast.LENGTH_SHORT).show();
         }catch (Exception e) {
             progreso.hide();
             Toast.makeText(Reporte_Usuario.this,e.getMessage(),Toast.LENGTH_SHORT)
@@ -362,7 +368,7 @@ public class Reporte_Usuario extends AppCompatActivity implements AdapterView.On
         }
     public Connection conexionBD(){
         Connection conexion = null;
-        String host = "192.168.1.13";
+        String host = "192.168.43.38";
         String port = "3306";
         String dbName = "fixit";
         String userName = "root";
