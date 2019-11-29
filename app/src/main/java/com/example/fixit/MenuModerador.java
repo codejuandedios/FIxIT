@@ -45,13 +45,12 @@ public class MenuModerador extends AppCompatActivity
 
 
 
-       /* View headerView = navigationView.getHeaderView(0);
-        TextView navUsername = (TextView) headerView.findViewById(R.id.lblusuario);
-        TextView navCorreo = (TextView) headerView.findViewById(R.id.lblcorreo);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.nombreMo);
+        TextView navCorreo = (TextView) headerView.findViewById(R.id.correoMo);
         navUsername.setText(UsuarioPerfil.getNombre() + " "+UsuarioPerfil.getApellido());
         navCorreo.setText(UsuarioPerfil.getEmail());
 
-        */
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

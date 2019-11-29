@@ -21,6 +21,7 @@
         app:srcCompat="@drawable/fixit" />
 
     <TextView
+        android:id="@+id/nombreMo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -28,7 +29,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/correoMo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Correo de la persona" />
