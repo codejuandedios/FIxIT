@@ -33,7 +33,6 @@ public class AdaptadorVistaUsuario extends RecyclerView.Adapter<AdaptadorVistaUs
         // each data item is just a string in this case
         public ImageView icono;
         public TextView nombre,rol,Estado;
-        public Button editar;
         Context cont;
 
         public MyViewHolder(View itemView){
@@ -43,7 +42,7 @@ public class AdaptadorVistaUsuario extends RecyclerView.Adapter<AdaptadorVistaUs
             nombre = itemView.findViewById(R.id.lblTipo);
             rol = itemView.findViewById(R.id.lblDescripcion);
             Estado = itemView.findViewById(R.id.lblFecha);
-            editar = itemView.findViewById(R.id.editar);
+
 
         }
 
@@ -87,12 +86,6 @@ public class AdaptadorVistaUsuario extends RecyclerView.Adapter<AdaptadorVistaUs
             holder.Estado.setText("inactivo");
         }
 
-        holder.editar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
 

@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="309dp"
-        android:background="#045333"
+        android:background="#558b2f"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
@@ -39,7 +39,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:background="#333333 "
+            android:background="#333333"
             app:tabIndicatorColor="#8FB632"
             app:tabTextColor="#FFFFFF" />
 
